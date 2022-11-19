@@ -27,9 +27,7 @@ pipeline {
                 sh 'echo AWS_ACCESS_KEY is $AWS_ACCESS_KEY' 
                 sh 'echo SSH_CRED is $SSH-CRED'
             }
-            options{
-                buildDiscarder(logRotator(numToKeepStr: '3')) }
-            }
+            
         }
         stage('Test') {
             steps {
