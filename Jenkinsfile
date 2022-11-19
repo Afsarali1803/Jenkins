@@ -12,13 +12,18 @@ pipeline {
 '''
 pipeline {
     agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '3')) 
+        disableConcurrentBuilds()
+        { timeout(time: 1, unit: 'MINUTES') }
+        }
+    }
     environment {
         ENV_URL="pipeline.google.com"
         AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY') 
         AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
         SSH_CRED = credentials('SSH-CRED')
     }
-
     stages {
         stage('Build') {
             steps {
