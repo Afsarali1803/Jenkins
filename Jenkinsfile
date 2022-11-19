@@ -30,7 +30,8 @@ pipeline {
         }
         stage('Deploy') {
             environment {
-            ENV_URL="pipeline.google.com"
+                ENV_URL="stage.google.com"
+            }
             steps {
                 echo 'Deploying....'
                 sh 'echo ENV_URL is $ENV_URL'
