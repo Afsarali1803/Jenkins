@@ -15,8 +15,8 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '3')) 
         disableConcurrentBuilds()
-        { timeout(time: 1, unit: 'MINUTES') }
-        }
+        timeout(time: 1, unit: 'MINUTES') 
+    }
     environment {
         ENV_URL="pipeline.google.com"
         AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY') 
