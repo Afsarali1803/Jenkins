@@ -38,11 +38,11 @@ pipeline {
         stage('Deploy') {
             environment {
                 ENV_URL="stage.google.com"
-                sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
             }
             steps {
                 echo 'Deploying....'
                 sh 'echo ENV_URL is $ENV_URL'
+                sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
             }
         }
     }
