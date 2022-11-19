@@ -12,11 +12,15 @@ pipeline {
 '''
 pipeline {
     agent any
+    environment {
+        ENV_URL="pipeline.google.com"
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh "echo ENV_URL is $(ENV_URL)"
             }
         }
         stage('Test') {
