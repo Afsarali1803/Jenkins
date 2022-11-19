@@ -14,7 +14,7 @@ pipeline {
     agent any
     environment {
         ENV_URL="pipeline.google.com"
-        AWS_ACCESS_KEY = credentials('my-predefined-secret-text') 
+        AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY') 
     }
 
     stages {
