@@ -15,6 +15,7 @@ pipeline {
     environment {
         ENV_URL="pipeline.google.com"
         AWS_ACCESS_KEY = credentials('AWS_ACCESS_KEY') 
+        AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
     }
 
     stages {
@@ -28,6 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
             }
         }
         stage('Deploy') {
