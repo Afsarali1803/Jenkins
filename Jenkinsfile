@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                echo 'ENV_URL is $(ENV_URL)'
+                sh 'echo ENV_URL is $ENV_URL'
             }
         }
         stage('Test') {
