@@ -13,6 +13,7 @@ pipeline {
 pipeline {
     agent any
     environment {
+        ENV_URL="pipeline.google.com"
         AWS_ACCESS_KEY = credentials('my-predefined-secret-text') 
     }
 
@@ -20,7 +21,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'echo ENV_URL is $AWS_ACCESS_KEY'
+                sh 'echo ENV_URL is $ENV_URL'
+                sh 'echo AWS_ACCESS_KEY is $AWS_ACCESS_KEY' 
             }
         }
         stage('Test') {
