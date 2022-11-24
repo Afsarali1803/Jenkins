@@ -12,6 +12,7 @@ pipeline {
 '''
 pipeline {
     agent any
+    triggers { pollSCM('*/2 */4 * * 1-5') }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
