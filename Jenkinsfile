@@ -36,6 +36,9 @@ pipeline {
         AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
         SSH_CRED = credentials('SSH-CRED')
     }
+    tools {
+        maven 'apache-maven-3.5.0' 
+    }
     stages {
         stage('Build') {
             steps {
