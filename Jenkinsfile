@@ -47,6 +47,7 @@ pipeline {
                     sh "hostname"   // I want this job to run this on WS
                     sh 'mvn --version'
                     sh "echo One"
+                    sh "env"
                     sh "sleep 10"
                 }
             }
