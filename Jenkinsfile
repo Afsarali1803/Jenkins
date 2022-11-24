@@ -55,7 +55,7 @@ pipeline {
                 steps {
                     sh "echo One"
                     sh "echo ENV_URL is ${ENV_URL}"
-                    sh "echo $ACCESS_KEY"
+                    sh "echo $AWS_ACCESS_KEY"
                     sh "sleep 20"
                 }
             }
