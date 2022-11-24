@@ -24,7 +24,7 @@ pipeline {
     //*
     //*    password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     //*}
-    triggers { pollSCM('*/2 */4 * * 1-5') }
+    triggers { pollSCM('*/2 * * * *') }
     options {
         buildDiscarder(logRotator(numToKeepStr: '3')) 
         disableConcurrentBuilds()
