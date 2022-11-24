@@ -40,36 +40,35 @@ pipeline {
         maven 'maven-3.5.0' 
     }
     stages {
-        stage('Parallel'){
+        stage('Parallel Stage') {
             parallel {
-
-            }
-            stage('Build') {
+            stage('First Stage Name') {
                 steps {
-                    echo 'Building..'
-                    sh 'echo ENV_URL is $ENV_URL'
-                    sh 'echo AWS_ACCESS_KEY is $AWS_ACCESS_KEY' 
-                    sh 'echo SSH_CRED is $SSH-CRED'
-                }
-            
-            }
-            stage('Test') {
-                steps {
-                    echo 'Testing..'
+                    sh "hostname"   // I want this job to run this on WS
                     sh 'mvn --version'
-                    sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
+                    sh "echo One"
+                    sh "env"
+                    sh "sleep 10"
                 }
             }
-            stage('Deploy') {
+            stage('Second Stage Name') {
+                steps {
+                    sh "echo One"
+                    sh "echo ENV_URL is ${ENV_URL}"
+                    sh "echo $ACCESS_KEY"
+                    sh "sleep 20"
+                }
+            }
+            stage('Third Stage Name') {
                 environment {
-                    ENV_URL="stage.google.com"
+                    ENV_URL = "stage.google.com"
                 }
                 steps {
-                    echo 'Deploying....'
-                    sh 'echo ENV_URL is $ENV_URL'
-                    sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
+                    sh "echo ENV_URL is ${ENV_URL}"
+                    sh "sleep 21"
+                    }
                 }
-            }
+            }    
         }
     }
 }
