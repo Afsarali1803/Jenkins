@@ -49,7 +49,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh mvn --version
+                sh 'mvn --version'
                 sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
             }
         }
