@@ -40,7 +40,7 @@ pipeline {
         maven 'maven-3.5.0' 
     }
     stages {
-        stage('Parallel')
+        stage('Parallel'){
             parallel {
 
             }
@@ -72,3 +72,4 @@ pipeline {
             }
         }
     }
+}
