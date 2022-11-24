@@ -40,31 +40,35 @@ pipeline {
         maven 'maven-3.5.0' 
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                sh 'echo ENV_URL is $ENV_URL'
-                sh 'echo AWS_ACCESS_KEY is $AWS_ACCESS_KEY' 
-                sh 'echo SSH_CRED is $SSH-CRED'
+        stage('Parallel')
+            parallel {
+
             }
+            stage('Build') {
+                steps {
+                    echo 'Building..'
+                    sh 'echo ENV_URL is $ENV_URL'
+                    sh 'echo AWS_ACCESS_KEY is $AWS_ACCESS_KEY' 
+                    sh 'echo SSH_CRED is $SSH-CRED'
+                }
             
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'mvn --version'
-                sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
             }
-        }
-        stage('Deploy') {
-            environment {
-                ENV_URL="stage.google.com"
+            stage('Test') {
+                steps {
+                    echo 'Testing..'
+                    sh 'mvn --version'
+                    sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
+                }
             }
-            steps {
-                echo 'Deploying....'
-                sh 'echo ENV_URL is $ENV_URL'
-                sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
+            stage('Deploy') {
+                environment {
+                    ENV_URL="stage.google.com"
+                }
+                steps {
+                    echo 'Deploying....'
+                    sh 'echo ENV_URL is $ENV_URL'
+                    sh 'echo AWS_SECRET_KEY is $AWS_SECRET_KEY'
+                }
             }
         }
     }
-}
